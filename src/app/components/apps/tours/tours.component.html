@@ -1,0 +1,149 @@
+<div class="clientes_component">
+    <div>
+      <h2 class="text-center">Listado de Tours</h2>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="standard">
+          <mat-label>Buscar</mat-label>
+          <input autocomplete="off" matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input>
+        </mat-form-field>
+      </div>
+      <div class="col m-auto" style="text-align: right;">
+        <button (click)="exportAsExcelFiltered()" class="px-4" color="primary" mat-raised-button>Exportar a Excel <i class=" ms-1 fa-solid fa-file-excel"></i></button>
+        <button class="px-4 ms-3"  routerLink="/dashboard/tours/addTour" mat-raised-button>Agregar Tour</button>
+      </div>
+    </div>
+
+    <div *ngIf="spinner" class="spinner table-container">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div> 
+  
+    <div *ngIf="!spinner" class="my-table table-container">
+      <table mat-table [dataSource]="dataSourceTours" class="w-100" matSort>
+  
+        <ng-container class="me-3" matColumnDef="No.">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef=" let i = index "> {{ i + 1 }} </td>
+        </ng-container>
+
+        <ng-container class="me-3" matColumnDef="id_tour">
+          <th mat-header-cell *matHeaderCellDef> Id de Tour </th>
+          <td mat-cell *matCellDef=" let element"> {{ element.TOU_ID }} </td>
+        </ng-container>
+  
+        <ng-container class="me-3" matColumnDef="nombreTour">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+          <td mat-cell *matCellDef="let element"> {{element.TOU_NOMBRE}} </td>
+        </ng-container>
+  
+        <ng-container class="me-3" matColumnDef="fechaTour">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+          <td mat-cell *matCellDef="let element"> {{element.TOU_FECHA | date:'dd/MM/yyyy'}} </td>
+        </ng-container>
+  
+        <ng-container class="me-3" matColumnDef="tipoTour">
+          <th mat-header-cell *matHeaderCellDef>Tipo</th>
+          <td mat-cell *matCellDef="let element"> {{element.TOU_TIPO}} </td>
+        </ng-container>
+  
+        <ng-container class="me-3" matColumnDef="valorNeto">
+          <th mat-header-cell *matHeaderCellDef>Valor Neto</th>
+          <td mat-cell *matCellDef="let element"> $ {{element.TOU_VALORNETO}} </td>
+        </ng-container>
+  
+        <ng-container class="me-3" matColumnDef="valorComisionable">
+          <th mat-header-cell *matHeaderCellDef>Valor Comisionable</th>
+          <td mat-cell *matCellDef="let element"> $ {{element.TOU_VALORCOMISIONABLE}} </td>
+        </ng-container>
+
+        <ng-container class="me-3" matColumnDef="valor_agencias">
+          <th mat-header-cell *matHeaderCellDef>Valor Agencias</th>
+          <td mat-cell *matCellDef="let element"> $ {{element.TOU_AGENCIAS}} </td>
+        </ng-container>
+
+        <ng-container class="me-3" matColumnDef="infante">
+          <th mat-header-cell *matHeaderCellDef>Valor Infante</th>
+          <td mat-cell *matCellDef="let element"> $ {{element.TOU_INFANTE}} </td>
+        </ng-container>
+
+        <ng-container class="me-3" matColumnDef="nino">
+          <th mat-header-cell *matHeaderCellDef>Valor Niño</th>
+          <td mat-cell *matCellDef="let element"> $ {{element.TOU_NINO}} </td>
+        </ng-container>
+
+        <ng-container class="me-3" matColumnDef="adulto">
+          <th mat-header-cell *matHeaderCellDef>Valor Adulto</th>
+          <td mat-cell *matCellDef="let element"> $ {{element.TOU_ADULTO}} </td>
+        </ng-container>
+
+         <ng-container class="me-3" matColumnDef="adulto_mayor">
+          <th mat-header-cell *matHeaderCellDef>Valor Adulto Mayor</th>
+          <td mat-cell *matCellDef="let element"> $ {{element.TOU_ADULTO_MAYOR}} </td>
+        </ng-container>
+
+        <ng-container class="me-3" matColumnDef="cod_aero">
+          <th mat-header-cell *matHeaderCellDef>Codigo Aerolinea</th>
+          <td mat-cell *matCellDef="let element"> $ {{element.TOU_CODIGO_AEROLINEA}} </td>
+        </ng-container>
+
+        <ng-container class="me-3" matColumnDef="sal_fec_vuelo">
+          <th mat-header-cell *matHeaderCellDef>Fecha Regreso Vuelo</th>
+          <td mat-cell *matCellDef="let element"> $ {{element.TOU_VUELO_SALIDA | date:'dd/MM/yyyy'}} </td>
+        </ng-container>
+
+        <ng-container class="me-3" matColumnDef="sal_hr_vuelo">
+          <th mat-header-cell *matHeaderCellDef>Hora Salida Vuelo</th>
+          <td mat-cell *matCellDef="let element"> $ {{element.TOU_HORA_SALIDA}} </td>
+        </ng-container>
+
+        <ng-container class="me-3" matColumnDef="reg_fec_vuelo">
+          <th mat-header-cell *matHeaderCellDef>Fecha Regreso Vuelo</th>
+          <td mat-cell *matCellDef="let element"> $ {{element.TOU_VUELO_REGRESO | date:'dd/MM/yyyy'}} </td>
+        </ng-container>
+
+        <ng-container class="me-3" matColumnDef="reg_hr_vuelo">
+          <th mat-header-cell *matHeaderCellDef>Hora Regreso Vuelo</th>
+          <td mat-cell *matCellDef="let element"> $ {{element.TOU_HORA_REGRESO}} </td>
+        </ng-container>                 
+
+        <ng-container class="me-3" matColumnDef="observacion_factura">
+          <th mat-header-cell *matHeaderCellDef> Observación Factura </th>
+          <td mat-cell *matCellDef="let element"> {{element.TOU_OBSERVACIONES_FACTURA}} </td>
+        </ng-container>
+  
+        <ng-container class="me-3" matColumnDef="observacion">
+          <th mat-header-cell *matHeaderCellDef> Observación </th>
+          <td mat-cell *matCellDef="let element"> {{element.TOU_OBSERVACIONES}} </td>
+        </ng-container>
+  
+        <ng-container class="me-3" matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let element">
+            <a routerLink="editTour/{{ element.TOU_ID }}" href="" class="pointer">
+              <mat-icon>edit</mat-icon>
+            </a>
+  
+            <a (click)="eliminarTour(element.TOU_ID)" style="color:rgb(194, 45, 45)" class="pointer">
+              <mat-icon>delete</mat-icon>
+            </a>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  
+  
+    <mat-paginator [pageSizeOptions]="[10, 20]"
+                     showFirstLastButtons
+                     aria-label="Select page of periodic elements">
+    </mat-paginator>
+    </div>
+  
+  
+  
+  

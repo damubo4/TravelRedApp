@@ -1,0 +1,20 @@
+.req-msg {
+    color: red;
+   }
+  
+   .input-container {
+     width: 70%;
+     font-size: 16px;
+   }
+  
+   .checkbox {
+    align-self: center;
+    text-align: -webkit-center;
+   }
+  
+   .search_button {
+    border: 0;
+    background-color: transparent;
+    right: 0px;
+    position: absolute;
+  }

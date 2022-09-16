@@ -1,0 +1,42 @@
+.pointer {
+    cursor: pointer;
+  }
+  
+  button {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .table-container {
+    overflow: hidden;
+    height: calc(100vh - 300px);
+  }
+  
+  .table-container:hover {
+    overflow: scroll;
+  }
+  
+  .table-container::-webkit-scrollbar {
+    width: 2px;
+    margin-left: 10px;
+  }
+  
+  .table-container::-webkit-scrollbar-thumb {
+    background: rgb(98, 95, 110, 0.5);
+    border-radius: 5px;
+  }
+  
+  .mat-header-cell, .mat-cell {
+    padding-right: 10px!important;
+    padding-left: 10px!important;
+    white-space: nowrap;
+    border-right: solid 1px lightgrey;
+  }
+  
+  
+  
+  
+  
+  
+  
+  

@@ -1,0 +1,27 @@
+<div class="row ">
+    <div class="login p-5 col-lg-8 position-absolute start-50 top-50 translate-middle">
+        <div class="row">
+            <div class="col-lg-6">
+                <img class="w-100" src="../../../../../assets/images/logos/TravelRed.png" alt="">
+            </div>            
+            <div class="col-lg-6 my-auto">                
+                <h2 class="mb-5 text-center fst-italic">Bienvenido al sistema de Gestión de <b> TravelRed </b> </h2>
+                <form action="" [formGroup]="myForm">
+                    <div>
+                        <mat-form-field class="w-100" appearance="fill">
+                            <mat-label>Cédula</mat-label>
+                            <input formControlName="log_cedula" type="text" matInput placeholder="" value="">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="w-100" appearance="fill">
+                            <mat-label>Password</mat-label>
+                            <input formControlName="log_pass" type="password" matInput placeholder="" value="">
+                        </mat-form-field>
+                    </div>  
+                    <button [disabled]="myForm.invalid" (click)="loginCliente()" type="button" class="btn buttons px-4 btn-secondary w-100" >Ingresar</button>     
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

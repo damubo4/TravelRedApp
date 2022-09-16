@@ -1,0 +1,165 @@
+<div class="add-edit py-5">
+    <div class="mb-5">
+      <h2 class="text-center">{{ accion }} Tour</h2>
+    </div>
+  
+    <!-- <pre> {{ myForm.value | json }}</pre> -->
+  
+    <div class="text-center">
+        <form [formGroup]="myForm" class="row" autocomplete="off">
+  
+          <div class="col-lg-6">
+  
+            <div class="col-lg-12">
+              <mat-form-field class="input-container">
+                <mat-label>Nombre Tour</mat-label>
+                <input matInput formControlName="tou_name">
+              </mat-form-field>
+            </div>
+  
+            <div class="col-lg-12">
+              <mat-form-field class="input-container">
+                <mat-label>Tipo de Tour</mat-label>
+                <input matInput formControlName="tou_tipo">
+              </mat-form-field>
+            </div>
+  
+            <div class="col-lg-12">
+              <mat-form-field class="input-container" >
+                <mat-label>Fecha Tour</mat-label>
+                <input matInput [matDatepicker]="dp1" formControlName="tou_fecha" [attr.disabled]="true">
+                <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #dp1 disabled="false"></mat-datepicker>
+              </mat-form-field>
+            </div>
+  
+         </div>
+  
+        <div class="col-lg-6 mb-3">  
+          <div class="col-lg-12">
+            <mat-form-field class="input-container">
+              <mat-label>Valor Neto</mat-label>
+              <input matInput formControlName="tou_valorNeto">
+            </mat-form-field>
+          </div>
+  
+          <div class="col-lg-12">
+            <mat-form-field class="input-container">
+              <mat-label>Valor Comisionable</mat-label>
+              <input matInput formControlName="tou_valorCom">
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-12">
+            <mat-form-field class="input-container">
+              <mat-label>Valor Agencias</mat-label>
+              <input matInput formControlName="tou_agencias">
+            </mat-form-field>
+          </div>  
+        </div>
+
+        <div class="col-lg-12 mb-3">
+          <mat-form-field class="input-container">
+            <mat-label>Observaciones</mat-label>
+            <textarea formControlName="tou_obs" matInput placeholder="Observación"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-12 mb-3">
+          <mat-form-field class="input-container">
+            <mat-label>Observaciónes factura</mat-label>
+            <textarea formControlName="obs_factura" matInput placeholder="Observaciónes factura"></textarea>
+          </mat-form-field>
+        </div>
+
+        <h3 class="text-center">Valores adicionales</h3>
+        <div class="col-lg-6">  
+          <div class="col-lg-12">
+            <mat-form-field class="input-container">
+              <mat-label>Valor Infante</mat-label>
+              <input matInput formControlName="tou_infante">
+            </mat-form-field>
+          </div>
+  
+          <div class="col-lg-12">
+            <mat-form-field class="input-container">
+              <mat-label>Valor Niño</mat-label>
+              <input matInput formControlName="tou_nino">
+            </mat-form-field>
+          </div>          
+        </div>
+
+        <div class="col-lg-6 mb-3">
+          <div class="col-lg-12">
+            <mat-form-field class="input-container">
+              <mat-label>Valor Adulto</mat-label>
+              <input matInput formControlName="tou_adulto">
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-12">
+            <mat-form-field class="input-container">
+              <mat-label>Valor Adulto Mayor</mat-label>
+              <input matInput formControlName="tou_adulto_mayor">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div>
+          <h3>Valores aerolinea</h3>
+          <div class="row">
+            <div class="col-lg-6">
+              <mat-form-field class="input-container" >
+                <mat-label>Fecha vuelo ida</mat-label>
+                <input matInput [matDatepicker]="dp2" formControlName="fecha_ida" [attr.disabled]="true">
+                <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #dp2 disabled="false"></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-6">
+              <mat-form-field class="input-container">
+                <mat-label>Hora vuelo ida</mat-label>
+                <input type="time" matInput formControlName="hr_ida">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <mat-form-field class="input-container" >
+                <mat-label>Fecha vuelo regreso</mat-label>
+                <input matInput [matDatepicker]="dp3" formControlName="fecha_vuelta" [attr.disabled]="true">
+                <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #dp3 disabled="false"></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-6">
+              <mat-form-field class="input-container">
+                <mat-label>Hora vuelo regreso</mat-label>
+                <input type="time" matInput formControlName="hr_vuelta">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 m-auto">
+              <mat-form-field class="input-container">
+                <mat-label>Codigo Aerolinea</mat-label>
+                <input type="text" matInput formControlName="cod_aero">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+  
+          
+  
+          <div class="col-lg-12 input-container m-auto mt-3 d-flex justify-content-around">
+  
+              <button [disabled]="myForm.invalid" (click)="agregarTour()" type="button" class="btn buttons px-4 btn-secondary" >Aceptar</button>
+              <button routerLink="/dashboard/tours" type="button" class="btn buttons px-4 btn-danger">Cancelar</button>
+  
+          </div>
+        </form>
+      </div>
+    </div>
+  

@@ -1,0 +1,107 @@
+<div class="clientes_component">
+    <div>
+      <h2 class="text-center">Listado de Clientes</h2>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="standard">
+          <mat-label>Buscar</mat-label>
+          <input autocomplete="off" matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input>
+        </mat-form-field>
+      </div>
+      <div class="col m-auto" style="text-align: right;">
+        <button (click)="exportAsExcelFiltered()" class="px-4" color="primary" mat-raised-button>Exportar a Excel <i class=" ms-1 fa-solid fa-file-excel"></i></button>
+        <button class="px-4 ms-3"  routerLink="/dashboard/clientes/addCliente" mat-raised-button>Agregar Cliente</button>
+      </div>
+    </div>
+
+    <div *ngIf="spinner" class="spinner table-container">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div> 
+    
+    <div *ngIf="!spinner" class="my-table table-container">
+      <table mat-table [dataSource]="dataSourceClientes" class="w-100" matSort>
+    
+        <!-- <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container> -->
+    
+        <ng-container class="me-3" matColumnDef="No.">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef=" let i = index "> {{ i + 1 }} </td>
+        </ng-container>
+    
+        <ng-container class="me-3" matColumnDef="nombres">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombres</th>
+          <td mat-cell *matCellDef="let element"> {{ element.CLN_NOMBRE }} </td>
+        </ng-container>
+    
+        <ng-container class="me-3" matColumnDef="apellidos">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Apellidos</th>
+          <td mat-cell *matCellDef="let element"> {{ element.CLN_APELLIDO }} </td>
+        </ng-container>
+    
+        <ng-container class="me-3" matColumnDef="cedula">
+          <th mat-header-cell *matHeaderCellDef>Cedula</th>
+          <td mat-cell *matCellDef="let element"> {{ element.CLN_CEDULA }} </td>
+        </ng-container>
+    
+        <ng-container class="me-3" matColumnDef="celular">
+          <th mat-header-cell *matHeaderCellDef>Celular</th>
+          <td mat-cell *matCellDef="let element"> {{ element.CLN_CELULAR }} </td>
+        </ng-container>
+
+        <ng-container class="me-3" matColumnDef="direccion">
+          <th mat-header-cell *matHeaderCellDef>Dirección</th>
+          <td mat-cell *matCellDef="let element"> {{ element.CLN_DIRECCION }} </td>
+        </ng-container>
+    
+        <ng-container class="me-3" matColumnDef="edad">
+          <th mat-header-cell *matHeaderCellDef>Edad</th>
+          <td mat-cell *matCellDef="let element"> {{ element.CLN_EDAD }} </td>
+        </ng-container>
+    
+        <ng-container class="me-3" matColumnDef="fecha_nac">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Nac</th>
+          <td mat-cell *matCellDef="let element"> {{ element.CLN_FECHANAC | date:'dd/MM/yyyy' }} </td>
+        </ng-container>
+    
+        <ng-container class="me-3" matColumnDef="correo">
+          <th mat-header-cell *matHeaderCellDef>Correo</th>
+          <td mat-cell *matCellDef="let element"> {{ element.CLN_CORREO }} </td>
+        </ng-container>
+    
+        <ng-container class="me-3" matColumnDef="obs">
+          <th mat-header-cell *matHeaderCellDef>Observación</th>
+          <td mat-cell *matCellDef="let element"> {{ element.CLN_OBSERVACIONES }} </td>
+        </ng-container>
+    
+        <ng-container class="me-3" matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let element;">
+            <a routerLink="editCliente/{{ element.CLN_ID }}" href="" class="pointer">
+              <mat-icon>edit</mat-icon>
+            </a>
+    
+            <a (click)="eliminarCliente(element.CLN_ID)" style="color:rgb(194, 45, 45)" class="pointer">
+              <mat-icon>delete</mat-icon>
+            </a>
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+    
+    
+    <mat-paginator [pageSizeOptions]="[10, 20]"
+                     showFirstLastButtons
+                     aria-label="Select page of periodic elements">
+    </mat-paginator>
+    </div>
+    
+    

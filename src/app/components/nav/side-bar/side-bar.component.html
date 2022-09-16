@@ -1,0 +1,113 @@
+<nav class="nav" [class.active]="activeMenu">
+    <div class="button-burger position-absolute">
+      <button (click)="toggleMenu()" class="button" type="button" [class.activeRotate]="activeMenu">
+        <i class="fa-solid fa-angle-right fa-2x"></i>
+      </button>
+    </div>
+  
+  
+    <div class="mx-auto">
+      <div class="position-relative">
+        <div class="img-container">
+          <img src="../assets/images/logos/TravelRed.png" alt="">
+        </div>
+        <div class="menu-content position-absolute">
+          <h6>APPS</h6>
+          <hr>
+          <ul class="mb-5">
+            <li class="">
+                <a class="d-flex"  routerLink="/dashboard/home" routerLinkActive="activo">
+                  <div class="iconos">
+                    <i class="fa-solid fa-house"></i>
+                  </div>
+                  Home
+                </a>
+            </li>
+            <li class="">
+              <a class="d-flex"  routerLink="/dashboard/clientes" routerLinkActive="activo">
+                <div class="iconos">
+                  <i class="fa-solid fa-users"></i>
+                </div>
+                Clientes</a>
+            </li>
+            <li class="">
+              <a class="d-flex"  routerLink="/dashboard/reservas" routerLinkActive="activo">
+                <div class="iconos">
+                  <i class="fa-solid fa-bookmark"></i>
+                </div>
+                Reservas</a>
+            </li>
+            <li class="">
+              <a class="d-flex"  routerLink="/dashboard/devoluciones" routerLinkActive="activo">
+                <div class="iconos">
+                  <i class="fa-solid fa-reply"></i>
+                </div>
+                Devoluciones</a>
+            </li>
+            <li class="">
+              <a class="d-flex"  routerLink="/dashboard/ahorros" routerLinkActive="activo">
+                <div class="iconos">
+                  <i class="fa-solid fa-file-invoice-dollar"></i>
+                </div>
+                Ahorro programado</a>
+            </li>
+            <li class="">
+              <a class="d-flex"  routerLink="/dashboard/tours" routerLinkActive="activo">
+                <div class="iconos">
+                  <i class="fa-solid fa-plane"></i>
+                </div>
+                Tours</a>
+            </li>
+            <li class="">
+              <a class="d-flex"  routerLink="/dashboard/cuentas" routerLinkActive="activo">
+                <div class="iconos">
+                  <i class="fa-solid fa-money-check"></i>
+                </div>
+                Cuentas</a>
+            </li>
+            <li class="">
+              <a class="d-flex"  routerLink="/dashboard/grupos" routerLinkActive="activo">
+                <div class="iconos">
+                  <i class="fa-solid fa-user-group"></i>
+                </div>
+                Grupos</a>
+            </li>
+          </ul>
+  
+          <h6>CAJAS</h6>
+          <hr>
+          <ul class="">
+            <li class="">
+              <a class="d-flex" href="#" routerLink="/dashboard/caja-cuentas" routerLinkActive="activo">
+                <div class="iconos">
+                  <i class="fa-solid fa-money-check-dollar"></i>
+                </div>
+                Caja Cuentas</a>
+            </li>
+            <li class="">
+              <a class="d-flex" href="#" routerLink="/dashboard/caja-menor" routerLinkActive="activo">
+                <div class="iconos">
+                  <i class="fa-solid fa-coins"></i>
+                </div>
+                Caja Menor</a>
+            </li>
+            <li class="">
+              <a class="d-flex" href="#" routerLink="/dashboard/caja-mayor" routerLinkActive="activo">
+                <div class="iconos">
+                  <i class="fa-solid fa-dollar-sign"></i>
+                </div>
+                Caja Mayor</a>
+            </li>
+  
+          </ul>
+        </div>
+      </div>
+  
+      <div class="water-mark">
+          <h6 class="fs-6">Developed by <b>Q</b>Code</h6>
+      </div>
+  
+  
+    </div>
+  </nav>
+  
